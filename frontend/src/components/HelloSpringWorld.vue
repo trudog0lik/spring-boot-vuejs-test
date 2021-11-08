@@ -25,9 +25,7 @@
 export default {
   name: 'HelloSpringWorld',
   props: {
-    hellomsg: {
-      type: String,
-      required: true }
+    hellomsg: { required: true }
   }
 }
 </script>

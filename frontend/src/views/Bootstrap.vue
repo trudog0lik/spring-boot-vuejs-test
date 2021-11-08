@@ -39,26 +39,25 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import { defineComponent } from 'vue';
 import api from '../api/backend-api'
-import {AxiosError, AxiosRequestConfig} from "axios";
 
-interface State {
-  msg: string;
-  showResponse: boolean;
-  backendResponse: string;
-  responseConfig: any;
-  httpStatusCode: number;
-  httpStatusText: string;
-  headers: string[];
-  errors: AxiosError[]
+class State {
+  msg;
+  showResponse;
+  backendResponse;
+  responseConfig;
+  httpStatusCode;
+  httpStatusText;
+  headers;
+  errors
 }
 
 export default defineComponent({
   name: 'Bootstrap',
 
-  data: (): State => {
+  data() {
     return {
       msg: 'Nice Bootstrap candy!',
       showResponse: false,
@@ -71,7 +70,7 @@ export default defineComponent({
     }
   },
   methods: {
-    callHelloApi (): any {
+    callHelloApi: function () {
         api.hello().then(response => {
           this.backendResponse = response.data;
           this.httpStatusCode = response.status;
@@ -80,7 +79,7 @@ export default defineComponent({
           this.responseConfig = response.config;
           this.showResponse=true
         })
-        .catch((error: AxiosError) => {
+        .catch((error) => {
           this.errors.push(error)
         })
     }

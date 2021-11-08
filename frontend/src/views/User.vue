@@ -17,31 +17,22 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import { defineComponent } from 'vue';
 import api from "../api/backend-api";
-import {AxiosError} from "axios";
 
-interface State {
-  user: {
-    id: number
-    firstName: string,
-    lastName: string;
-  };
-  retrievedUser: {
-    id: number
-    firstName: string,
-    lastName: string;
-  };
-  showResponse: boolean;
-  showRetrievedUser: boolean;
-  errors: AxiosError[]
+class State {
+  user;
+  retrievedUser;
+  showResponse;
+  showRetrievedUser;
+  errors
 }
 
 export default defineComponent({
   name: 'User',
 
-  data: (): State => {
+  data() {
     return {
       errors: [],
       user: {
@@ -77,7 +68,7 @@ export default defineComponent({
           this.retrievedUser = response.data;
           this.showRetrievedUser = true
         })
-        .catch((error: AxiosError):void => {
+        .catch((error) => {
           this.errors.push(error)
         })
     }

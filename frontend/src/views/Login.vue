@@ -17,22 +17,21 @@
 
 </template>
 
-<script lang="ts">
+<script lang="js">
 import { defineComponent } from 'vue';
-import {AxiosError} from "axios";
 
-interface State {
-  loginError: boolean;
-  user: string;
-  password: string;
-  error: boolean;
-  errors: AxiosError[]
+class State {
+  loginError;
+  user;
+  password;
+  error;
+  errors;
 }
 
 export default defineComponent({
   name: 'Login',
 
-  data: (): State => {
+  data() {
     return {
       loginError: false,
       user: '',
@@ -48,7 +47,7 @@ export default defineComponent({
         .then(() => {
           this.$router.push('/Protected')
         })
-        .catch((error: AxiosError) => {
+        .catch((error) => {
           this.loginError = true;
           this.errors.push(error);
           this.error = true

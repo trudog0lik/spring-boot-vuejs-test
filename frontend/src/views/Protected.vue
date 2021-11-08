@@ -16,22 +16,21 @@
 
 </template>
 
-<script lang="ts">
+<script lang="js">
 import { defineComponent } from 'vue';
 import api from '../api/backend-api'
 import store from '../store'
-import {AxiosError} from "axios";
 
-interface State {
-  backendResponse: string;
-  securedApiCallSuccess: boolean,
-  errors: AxiosError[]
+class State {
+  backendResponse;
+  securedApiCallSuccess;
+  errors
 }
 
 export default defineComponent({
   name: 'Protected',
 
-  data: (): State => {
+  data() {
     return {
       backendResponse: '',
       securedApiCallSuccess: false,
@@ -46,7 +45,7 @@ export default defineComponent({
             this.securedApiCallSuccess = true;
             this.backendResponse = response.data;
           })
-          .catch((error: AxiosError) => {
+          .catch((error) => {
             console.log("Error: " + error);
             this.errors.push(error);
           })
