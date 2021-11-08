@@ -31,6 +31,37 @@
     "node-sass": "6.0.1",
     "sass-loader": "10.2.0"
   },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2020
+    },
+    "rules": {
+      "no-console": "warn",
+      "no-debugger": "warn"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
+  },
+  "eslintIgnore": [
+    "src/*"
+  ],
   "browserslist": [
     "> 1%",
     "last 2 versions",
