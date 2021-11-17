@@ -41,7 +41,7 @@
 
 <script lang="js">
 import { defineComponent } from 'vue';
-import api from '../api/backend-api'
+import BackendService from '../api/backend-api'
 
 class State {
   msg;
@@ -71,7 +71,7 @@ export default defineComponent({
   },
   methods: {
     callHelloApi: function () {
-        api.hello().then(response => {
+        BackendService.hello().then(response => {
           this.backendResponse = response.data;
           this.httpStatusCode = response.status;
           this.httpStatusText = response.statusText;

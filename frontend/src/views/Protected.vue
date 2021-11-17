@@ -18,7 +18,7 @@
 
 <script lang="js">
 import { defineComponent } from 'vue';
-import api from '../api/backend-api'
+import BackendService from '../api/backend-api'
 import store from '../store'
 
 class State {
@@ -39,7 +39,7 @@ export default defineComponent({
   },
   methods: {
     getSecuredTextFromBackend() {
-      api.getSecured(store.getters.getUserName, store.getters.getUserPass)
+      BackendService.getSecured(store.getters.getUserName, store.getters.getUserPass)
           .then(response => {
             console.log("Response: '" + response.data + "' with Statuscode " + response.status);
             this.securedApiCallSuccess = true;

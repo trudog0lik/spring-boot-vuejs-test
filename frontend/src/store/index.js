@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import api from '../api/backend-api'
+import BackendService from '../api/backend-api'
 
 export default createStore({
     state: {
@@ -23,7 +23,7 @@ export default createStore({
         login({commit}, {user, password}) {
             return new Promise((resolve, reject) => {
                 console.log("Accessing backend with user: '" + user);
-                api.getSecured(user, password)
+                BackendService.getSecured(user, password)
                     .then(response => {
                         console.log("Response: '" + response.data + "' with Statuscode " + response.status);
                         if(response.status === 200) {

@@ -12,7 +12,7 @@
 
 <script lang="js">
 import { defineComponent } from 'vue';
-import api from "../api/backend-api";
+import BackendService from "../api/backend-api";
 
 class State {
   msg;
@@ -33,7 +33,7 @@ export default defineComponent({
   methods: {
     // Fetches posts when the component is created.
     callHelloApi () {
-      api.hello().then(response => {
+      BackendService.hello().then(response => {
           this.backendResponse = response.data;
           console.log(response.data)
       })

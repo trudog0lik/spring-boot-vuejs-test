@@ -19,7 +19,7 @@
 
 <script lang="js">
 import { defineComponent } from 'vue';
-import api from "../api/backend-api";
+import BackendService from '../api/backend-api';
 
 class State {
   user;
@@ -52,7 +52,7 @@ export default defineComponent({
   methods: {
     // Fetches posts when the view is created.
     createNewUser () {
-      api.createUser(this.user.firstName, this.user.lastName).then(response => {
+      BackendService.createUser(this.user.firstName, this.user.lastName).then(response => {
           // JSON responses are automatically parsed.
           this.user.id = response.data;
           console.log('Created new User with Id ' + response.data);
@@ -63,7 +63,7 @@ export default defineComponent({
         })
     },
     retrieveUser () {
-      api.getUser(this.user.id).then(response => {
+      BackendService.getUser(this.user.id).then(response => {
           // JSON responses are automatically parsed.
           this.retrievedUser = response.data;
           this.showRetrievedUser = true
