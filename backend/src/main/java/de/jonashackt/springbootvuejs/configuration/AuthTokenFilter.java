@@ -2,6 +2,7 @@ package de.jonashackt.springbootvuejs.configuration;
 
 import de.jonashackt.springbootvuejs.domain.User;
 import de.jonashackt.springbootvuejs.repository.UserRepository;
+import de.jonashackt.springbootvuejs.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,7 +25,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     private JwtUtils jwtUtils;
 
     @Autowired
-    private UserRepository userService;
+    private UserService userService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -35,7 +36,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
             if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
                 String username = jwtUtils.getUsernameFromJwtToken(jwt);
 
-                User user = userService.findByUsername(username);
+                User user = userService.loadUserByUsername(username);
 
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));

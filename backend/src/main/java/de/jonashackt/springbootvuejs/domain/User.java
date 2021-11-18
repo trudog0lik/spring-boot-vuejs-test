@@ -1,26 +1,31 @@
 package de.jonashackt.springbootvuejs.domain;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.UUID;
 
 @Entity
 @Table(name="users")
+@Getter
+@Setter
+@NoArgsConstructor
 public class User implements UserDetails {
 
     // PrimaryKey
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private UUID id;
 
     private String username;
 
     private String password;
-
-    protected User() {}
 
     public User(String username, String password) {
         this.username = username;
@@ -32,14 +37,6 @@ public class User implements UserDetails {
         return String.format(
                 "User[id=%d, username='%s']",
                 id, username);
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     @Override
@@ -55,16 +52,6 @@ public class User implements UserDetails {
         return new HashSet<Role>(){{
             add(new Role());
         }};
-    }
-
-    @Override
-    public String getPassword() {
-        return this.password;
-    }
-
-    @Override
-    public String getUsername() {
-        return this.username;
     }
 
     @Override
