@@ -30,10 +30,10 @@ public class BackendController {
     }
 
     @ResponseBody
-    @RequestMapping(path = "/user/{lastName}/{firstName}", method = RequestMethod.POST)
+    @RequestMapping(path = "/user/{username}/{password}", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public long addNewUser (@PathVariable("lastName") String lastName, @PathVariable("firstName") String firstName) {
-        User savedUser = userRepository.save(new User(firstName, lastName));
+    public long addNewUser (@PathVariable("username") String username, @PathVariable("password") String password) {
+        User savedUser = userRepository.save(new User(username, password));
 
         LOG.info(savedUser + " successfully saved into DB");
 
