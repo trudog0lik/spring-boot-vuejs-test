@@ -39,10 +39,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/hello").permitAll()
                 .antMatchers("/api/user/**").permitAll() // allow every URI, that begins with '/api/user/'
                 .antMatchers("/api/secured").authenticated()
-                .antMatchers("/api/users/**").authenticated()
+                .antMatchers("/api/users/**").authenticated();
                 //.anyRequest().authenticated() // protect all other requests
-                .and()
-                .csrf().disable();
+//                .and()
+//                .csrf().disable();
     }
 
     //@Override
