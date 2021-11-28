@@ -37,6 +37,8 @@ public class SpaRedirectFilterConfiguration {
             protected void doFilterInternal(HttpServletRequest req,
                                             HttpServletResponse res,
                                             FilterChain chain) throws ServletException, IOException {
+                System.out.println(req.getRequestURI());
+
                 if (pattern.matcher(req.getRequestURI()).matches() && !req.getRequestURI().equals("/")) {
                     // Delegate/Forward to `/` if `pattern` matches, and it is not `/`
                     // Required because of 'mode: history's usage in frontend routing
