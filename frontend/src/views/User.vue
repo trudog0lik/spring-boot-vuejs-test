@@ -4,8 +4,8 @@
 
     <h3>Just some database interaction...</h3>
 
-    <input type="text" v-model="user.firstName" placeholder="first name">
-    <input type="text" v-model="user.lastName" placeholder="last name">
+    <input type="text" v-model="user.username" placeholder="username">
+    <input type="text" v-model="user.password" placeholder="password">
 
     <button @click="createNewUser()">Create User</button>
 
@@ -52,7 +52,7 @@ export default defineComponent({
   methods: {
     // Fetches posts when the view is created.
     createNewUser () {
-      BackendService.createUser(this.user.firstName, this.user.lastName).then(response => {
+      BackendService.createUser(this.user.username, this.user.password).then(response => {
           // JSON responses are automatically parsed.
           this.user.id = response.data;
           console.log('Created new User with Id ' + response.data);

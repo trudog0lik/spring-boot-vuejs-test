@@ -9,8 +9,11 @@ class BackendService {
         return axiosApi.get(`/user/` + userId);
     }
 
-    createUser(firstName, lastName) {
-        return axiosApi.post(`/user/` + firstName + '/' + lastName);
+    createUser(username, password) {
+        return axiosApi.post('auth/signup', {
+            username,
+            password
+        });
     }
 
     getSecured(user, password) {
