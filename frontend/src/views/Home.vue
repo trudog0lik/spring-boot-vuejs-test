@@ -8,7 +8,7 @@
 
 <script lang="js">
 import { defineComponent } from 'vue';
-import HelloSpringWorld from '@/components/HelloSpringWorld.vue'; // @ is an alias to /src
+import HelloSpringWorld from '../components/HelloSpringWorld.vue'; // @ is an alias to /src
 
 export default defineComponent({
   name: 'Home',
@@ -19,5 +19,5 @@ export default defineComponent({
 </script>
 
 <style>
-@import '../../static/css/home_style.css';
+@import '../assets/css/home_style.css';
 </style>
