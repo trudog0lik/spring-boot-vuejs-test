@@ -43,7 +43,7 @@ export default defineComponent({
   methods: {
     callLogin() {
       this.errors = [];
-      this.$store.dispatch("login", { user: this.user, password: this.password})
+      this.$store.dispatch("auth/login", { user: this.user, password: this.password})
         .then(() => {
           this.$router.push('/Protected')
         })
